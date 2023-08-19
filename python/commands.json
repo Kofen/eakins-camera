@@ -1,0 +1,169 @@
+{
+    "camera": {
+        "type": "C212",
+        "ip": "192.168.1.10",
+        "port": 420
+    },
+    "commands": {
+        "af": {
+            "address": "0x05",
+            "help_text": "Enable auto focus mode"
+        },
+        "mf": {
+            "address": "0x07",
+            "help_text": "Enable manual focus mode"
+        },
+        "set_focus": {
+            "address": "0x06",
+            "help_text": "Runs a single auto focus instance"
+        },
+        "focus": {
+            "address": "0x2C",
+            "start_byte": 16,
+            "offset": 175,
+            "help_text": "Set focus value (-200 to 200)",
+            "type": "str"
+        },
+        "bw": {
+            "address": "0x24",
+            "help_text": "Set black-and-white mode"
+        },
+        "color": {
+            "address": "0x1E",
+            "help_text": "Set color mode"
+        },
+        "roi_on": {
+            "address": "0x14",
+            "start_byte": 52,
+            "data": 1,
+            "help_text": "Enable region of interest (ROI) mode (x = 0-15, y = 0 - 14)"
+        },
+        "roi": {
+            "address": "0x16",
+            "help_text": "Set ROI parameters",
+            "start_byte": 64,
+            "type": "str"
+        },
+        "roi_off": {
+            "address": "0x14",
+            "start_byte": 52,
+            "data": 0,
+            "help_text": "Disable region of interest (ROI) mode"
+        },
+        "awb": {
+            "address": "0x0C",
+            "help_text": "Set auto white balance"
+        },
+        "mwb": {
+            "address": "0x0E",
+            "start_byte": 28,
+            "data": 1,
+            "help_text": "Set manual white balance"
+        },
+        "flip": {
+            "address": "0x19",
+            "start_byte": 84,
+            "data": 1,
+            "help_text": "Flip the image"
+        },
+        "no_flip": {
+            "address": "0x19",
+            "start_byte": 84,
+            "data": 0,
+            "help_text": "Do not flip the image"
+        },
+        "mirror": {
+            "address": "0x1A",
+            "start_byte": 85,
+            "data": 1,
+            "help_text": "Mirror the image"
+        },
+        "no_mirror": {
+            "address": "0x1A",
+            "start_byte": 85,
+            "data": 0,
+            "help_text": "Do not mirror the image"
+        },
+        "hdr": {
+            "address": "0x32",
+            "start_byte": 144,
+            "help_text": "Set HDR level",
+            "type": "str"
+        },
+        "50hz": {
+            "address": "0x1B",
+            "start_byte": 85,
+            "data": 1,
+            "help_text": "Set 50Hz rate rate"
+        },
+        "60hz": {
+            "address": "0x1B",
+            "start_byte": 85,
+            "data": 0,
+            "help_text": "Se 60Hz frame rate"
+        },
+        "brightness": {
+            "address": "0x0B",
+            "start_byte": 20,
+            "help_text": "Set image brightness (0 to 100)",
+            "type": "str"
+        },
+        "me": {
+            "address": "0x0A",
+            "start_byte": 24,
+            "data": 1,
+            "help_text": "Set manual exposure"
+        },
+        "ae": {
+            "address": "0x09",
+            "help_text": "Set automatic exposure"
+        },
+        "exposure": {
+            "address": "0x23",
+            "start_byte": 108,
+            "help_text": "Set image exposure (0 to 333)",
+            "type": "str"
+        },
+        "gain": {
+            "address": "0x18",
+            "start_byte": 76,
+            "help_text": "Set image gain (0 to 50)",
+            "type": "str"
+        },
+        "rgb": {
+            "address": "0x0F",
+            "start_byte": 32,
+            "help_text": "Set image color levels",
+            "type": "str"
+        },
+        "saturation": {
+            "address": "0x24",
+            "start_byte": 112,
+            "help_text": "Set image saturation (0 to 255)",
+            "type": "str"
+        },
+        "contrast": {
+            "address": "0x1C",
+            "start_byte": 88,
+            "help_text": "Set image contrast (0 to 100)",
+            "type": "str"
+        },
+        "sharpness": {
+            "address": "0x1D",
+            "start_byte": 92,
+            "help_text": "Set image sharpness (0 to 15)",
+            "type": "str"
+        },
+        "zoom": {
+            "address": "0x10",
+            "start_byte": 44,
+            "help_text": "Set digital zoom (1 to 50)",
+            "type": "str"
+        },
+        "default": {
+            "address": "0x12",
+            "help_text": "Set default setup"
+        }
+    }
+}
+
