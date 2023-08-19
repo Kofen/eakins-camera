@@ -1,9 +1,11 @@
+import pkg_resources
 import argparse
 import socket
 import struct
 import json
 
-with open("commands.json", "r") as json_file:
+json_path = pkg_resources.resource_filename(__name__, 'commands.json')
+with open(json_path, "r") as json_file:
     data = json.load(json_file)
 
 def send_command(server, port, command_address, data=None, data_start=None):
