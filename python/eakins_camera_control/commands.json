@@ -87,7 +87,7 @@
         "hdr": {
             "address": "0x32",
             "start_byte": 144,
-            "help_text": "Set HDR level",
+            "help_text": "Set HDR level (0 to 255)",
             "type": "str"
         },
         "50hz": {
@@ -100,7 +100,7 @@
             "address": "0x1B",
             "start_byte": 85,
             "data": 0,
-            "help_text": "Se 60Hz frame rate"
+            "help_text": "Set 60Hz frame rate"
         },
         "brightness": {
             "address": "0x0B",
