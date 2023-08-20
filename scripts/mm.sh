@@ -10,7 +10,7 @@ echo out > /sys/class/gpio/gpio64/direction
 echo 0 > /sys/class/gpio/gpio64/value
 
 
-#This is the GPIO for the blue power led, set to output and off, we use it as an indicator in our server app
+#This is the GPIO for the blue power led, set to output, and off, we use it as an indicator in our server app
 echo 89 > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio89/direction
 echo 0 > /sys/class/gpio/gpio89/value
@@ -19,7 +19,7 @@ echo 0 > /sys/class/gpio/gpio89/value
 ###net###
 #########
 
-#This is the default config from china, since the R8152 eth1, we comment out the config for eth0, ensuring that eth1 is our main ethernet port
+#This is the default config from Eakins, since the R8152 is eth1, we comment out the config for eth0, ensuring that eth1 is our main ethernet port
 #ifconfig eth0 up ;ifconfig eth0 192.168.1.243
 #mount -t nfs -o nolock -o tcp 192.168.1.213:/nfs /mnt ;
 
@@ -50,7 +50,7 @@ export TERM='vt100';export USER='root';
 
 #This is the main camera app
 /opt/camera &
-#Comment out the horrible chinese Qt app
+#Comment out the Eakins Qt app
 #/opt/qt_app -qws -C212 &
 
 
@@ -58,7 +58,7 @@ export TERM='vt100';export USER='root';
 #NOTE hot plugging the usb ethernet adapter, or not having it present at boot looses config and thus access to the camera. TODO implement autoload. 
 ifconfig eth1 up ;ifconfig eth1 192.168.1.10
 
-#For some reason, the server app quits, with no error if we start it to early, no idea why. Adding some delay so the system until system is ready
+#For some reason, the server app quits with no error if we start it to early, best guess is due to not eth1 being up. Adding some delay until the system is ready
 sleep 3
 #Start our server, -p set the port it listens to(Default no args is 1234)
 #/server -p 420 -d 2>&1 > /debug.txt &

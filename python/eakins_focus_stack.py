@@ -20,7 +20,7 @@ def send_command(server, port, command_address, data):
 
 def set_focus(server, port, focus_value):
     focus_address = 0x2C
-    focus_offset = int(focus_value + 175)  # Offset, zero focus value in the chinese Qt app is 0xaf = 175
+    focus_offset = int(focus_value + 175)  # Offset, zero focus value in the Qt app is 0xaf = 175
     # Pack focus value as a little-endian signed 32-bit integer
     focus_data = struct.pack('<i', focus_offset)
     response = send_command(server, port, focus_address, focus_data)
@@ -102,7 +102,7 @@ def focus_regions(images, laplacian_gradient):
 def main():
     parser = argparse.ArgumentParser(description="Camera control client")
     parser.add_argument("--server", default="192.168.1.10", help="Server address")
-    parser.add_argument("--port", type=int, default=420, help="Port number")
+    parser.add_argument("--port", type=int, default=1234, help="Port number")
     parser.add_argument("--focus_range", type=int, default=200, help="Focus value range")
     parser.add_argument("--focus_steps", type=int, default=10, help="Number of focus steps")
 

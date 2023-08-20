@@ -36,13 +36,14 @@
             "address": "0x14",
             "start_byte": 52,
             "data": 1,
-            "help_text": "Enable region of interest (ROI) mode (x = 0-15, y = 0 - 14)"
+            "help_text": "Enable region of interest (ROI) mode"
         },
         "roi": {
             "address": "0x16",
-            "help_text": "Set ROI parameters",
+            "help_text": "Set ROI parameters (x = 0-15, y = 0 - 14, i.e --roi x y = --roi 7 6)",
             "start_byte": 64,
-            "type": "str"
+            "type": "str",
+            "nargs": 2
         },
         "roi_off": {
             "address": "0x14",
@@ -133,8 +134,9 @@
         "rgb": {
             "address": "0x0F",
             "start_byte": 32,
-            "help_text": "Set image color levels",
-            "type": "str"
+            "help_text": "Set image color levels (0-4095, i.e --rgb r g b = --rgb 4095 4095 4095)",
+            "type": "str",
+            "nargs": 3
         },
         "saturation": {
             "address": "0x24",
