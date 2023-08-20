@@ -96,5 +96,5 @@ SAT: 0-255
 CONT: 0-100
 SHARP: 0-15
 ZOOM: 1-50
-FOCUS: The focus range in the Qt app is -200 to 200. This is offset to that 0 focus value is 175 sent to the camera app. 
+FOCUS: The focus range in the Qt app is -200 to 200. This is offset so that 0 focus value is 175 sent to the camera app. 
 """
