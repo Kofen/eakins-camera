@@ -57,7 +57,7 @@ export TERM='vt100';export USER='root';
 #Now that all drivers are loaded and good to go we can configure eth1 that is our usb interface. 
 #NOTE hot plugging the usb ethernet adapter, or not having it present at boot looses config and thus access to the camera. TODO implement autoload. 
 ifconfig eth1 up ;ifconfig eth1 192.168.1.10
-
+route add default gw 192.168.1.1
 #For some reason, the server app quits with no error if we start it to early, best guess is due to not eth1 being up. Adding some delay until the system is ready
 sleep 3
 #Start our server, -p set the port it listens to(Default no args is 1234)
