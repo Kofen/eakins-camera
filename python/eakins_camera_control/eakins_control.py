@@ -33,7 +33,7 @@ def main():
     for command, details in data["commands"].items():
         if details.get("type") == "str":
             if details.get("nargs"):    
-                parser.add_argument(f"--{command}", type=str, nargs=details.get("nargs"), help=details.get("help_text", ""))
+                parser.add_argument(f"--{command}", type=str, metavar=tuple(details.get("metavar").split(' ')), nargs=details.get("nargs"), help=details.get("help_text", ""))
             else:
                 parser.add_argument(f"--{command}", type=str, help=details.get("help_text", ""))
         else:

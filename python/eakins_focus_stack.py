@@ -12,10 +12,10 @@ def send_command(server, port, command_address, data):
         message[0] = command_address
         message[16:16+len(data)] = data
         s.sendall(message)
-        if True: #When the eakins server is not in debug, we do not get anything back, set to False
+        if False: #When the eakins server is not in debug, we do not get anything back, set to False
             response = s.recv(32) 
         else:
-            response = []
+            response = bytearray(1)
         return response
 
 def set_focus(server, port, focus_value):
@@ -41,6 +41,8 @@ def capture_snapshot():
 
 def align_images(frames):
     reference_frame = frames[len(frames) // 2]  # Choose a reference frame (e.g., the middle frame)
+    reference_frame = frames[-1]  # Choose a reference frame (e.g., the middle frame)
+    
     aligned_frames = [reference_frame]
 
     for frame in frames:
@@ -109,14 +111,14 @@ def main():
     args = parser.parse_args()
 
     #focus_values = np.arange(-args.focus_range, args.focus_range, args.focus_steps)
-    focus_values = np.arange(152, 170, args.focus_steps)
+    focus_values = np.arange(178, 200, args.focus_steps)
     captured_frames = []
 
     for focus_value in focus_values:
         if -200 <= focus_value <= 200:
             response = set_focus(args.server, args.port, focus_value)
             print(f"Focus: {focus_value}, Response: {response.hex()}")
-            time.sleep(0.1)
+            time.sleep(0.5)
             snapshot = capture_snapshot()
             captured_frames.append(snapshot)
         else:

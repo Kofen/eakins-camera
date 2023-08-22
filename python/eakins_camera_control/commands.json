@@ -5,6 +5,10 @@
         "port": 420
     },
     "commands": {
+        "default": {
+            "address": "0x12",
+            "help_text": "Set default setup"
+        },
         "af": {
             "address": "0x05",
             "help_text": "Enable auto focus mode"
@@ -38,19 +42,6 @@
             "data": 1,
             "help_text": "Enable region of interest (ROI) mode"
         },
-        "roi": {
-            "address": "0x16",
-            "help_text": "Set ROI parameters (x = 0-15, y = 0 - 14, i.e --roi x y = --roi 7 6)",
-            "start_byte": 64,
-            "type": "str",
-            "nargs": 2
-        },
-        "roi_off": {
-            "address": "0x14",
-            "start_byte": 52,
-            "data": 0,
-            "help_text": "Disable region of interest (ROI) mode"
-        },
         "awb": {
             "address": "0x0C",
             "help_text": "Set auto white balance"
@@ -60,6 +51,20 @@
             "start_byte": 28,
             "data": 1,
             "help_text": "Set manual white balance"
+        },
+        "roi": {
+            "address": "0x16",
+            "help_text": "Set ROI parameters (x = 0 to 15, y = 0 to 14, i.e --roi x y = --roi 7 6)",
+            "start_byte": 64,
+            "type": "str",
+            "nargs": 2,
+            "metavar": "X Y"
+        },
+        "roi_off": {
+            "address": "0x14",
+            "start_byte": 52,
+            "data": 0,
+            "help_text": "Disable region of interest (ROI) mode"
         },
         "flip": {
             "address": "0x19",
@@ -134,9 +139,10 @@
         "rgb": {
             "address": "0x0F",
             "start_byte": 32,
-            "help_text": "Set image color levels (0-4095, i.e --rgb r g b = --rgb 4095 4095 4095)",
+            "help_text": "Set image color levels (0 to 4095, i.e --rgb r g b = --rgb 4095 4095 4095)",
             "type": "str",
-            "nargs": 3
+            "nargs": 3,
+            "metavar": "R G B"
         },
         "saturation": {
             "address": "0x24",
@@ -159,13 +165,10 @@
         "zoom": {
             "address": "0x10",
             "start_byte": 44,
-            "help_text": "Set digital zoom (1 to 50)",
+            "help_text": "Set digital zoom (0 to 50)",
             "type": "str"
-        },
-        "default": {
-            "address": "0x12",
-            "help_text": "Set default setup"
         }
+
     }
 }
 
