@@ -2,11 +2,17 @@ import pkg_resources
 import argparse
 import socket
 import json
+import os
 
 json_path = pkg_resources.resource_filename(__name__, 'commands.json')
 with open(json_path, "r") as json_file:
     data = json.load(json_file)
 
+if os.path.exists('/etc/camera.json'):
+    with open('/etc/camera.json', "r") as json_file:
+        data["camera"] = json.load(json_file)["camera"]
+
+print(data["camera"])
 def send_command(server, port, command_address, data=None, data_start=None):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((server, port))
