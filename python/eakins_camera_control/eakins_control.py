@@ -3,6 +3,7 @@ import argparse
 import socket
 import json
 import os
+import sys
 
 json_path = pkg_resources.resource_filename(__name__, 'commands.json')
 with open(json_path, "r") as json_file:
@@ -44,7 +45,13 @@ def main():
         else:
             parser.add_argument(f"--{command}", action="store_true", help=details.get("help_text", ""))
     
+    if "--help" in sys.argv or "-h" in sys.argv:
+        help_message = parser.format_help()
+        print(help_message)
+        sys.exit(0)    
+    
     args = parser.parse_args()
+
 
     # Access the parsed command arguments and execute corresponding actions
     for command, details in data["commands"].items():
@@ -89,13 +96,13 @@ X startbyte == 64. Y startbyte == 72
 Center of the screen is (x,y) = (7,6)
 HDR: 0 to 255
 BRIGHTNESS: 0 to 100
-EXPOSURE: 0 to 333 (One would think this should be 0-335, todo, test)
+EXPOSURE: 0 to 333 (One would think this should be 0-335, todo: test)
 GAIN: 0 to 50 
 RGB:
 R: 0 to 4095 
 G: 0 to 4095
 B: 0 to 4095
-About rgb, all of them are sent in one package, the address is 0x0F and then each color has it space, R32+33, G36+37, B40+41
+About rgb: all of them are sent in one package, the address is 0x0F and then each color has it's space, R32+33, G36+37, B40+41
 This means we can't just set a single value without sending them all. 
 SAT: 0-255
 CONT: 0-100

@@ -1,0 +1,92 @@
+System startup
+
+Uncompress Ok!
+
+U-Boot 2020.01 (Oct 20 2021 - 15:15:30 +0800)hi3516av300
+
+DRAM:  SPI Nor:  hifmc_ip_ver_check(38): Check Flash Memory Controller v100 ...hifmc_ip_ver_check(44):  Found
+hifmc_spi_nor_probe(2213): SPI Nor ID Table Version 1.0
+NAND:  hifmc_ip_ver_check(38): Check Flash Memory Controller v100 ...hifmc_ip_ver_check(44):  Found
+SPI Nand ID Table Version 2.7
+Warning: Wait SPI nand ready timeout, status: 0xff
+Warning: Wait SPI nand ready timeout, status: 0xff
+0 MiB
+MMC:   
+Loading Environment from SPI Flash... hifmc_ip_ver_check(38): Check Flash Memory Controller v100 ...hifmc_ip_ver_check(44):  Found
+hifmc_spi_nor_probe(2213): SPI Nor ID Table Version 1.0
+SPI Nor(cs 0) ID: 0xff 0xfc 0x1f can't find in the ID table !!!
+*** Warning - spi_flash_probe() failed, using default environment
+
+Loading Environment from NAND... *** Warning - readenv() failed, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+MMC Device 0 not found
+No mmc driver found!
+USB0:   Register 1000140 NbrPorts 1
+Starting the controller
+USB XHCI 1.10
+scanning bus 0 for devices... 2 USB Device(s) found
+0 Storage Device(s) found
+Net:   eth0
+Error: eth0 address not set.
+
+Autoboot in 0 seconds
+hifmc_ip_ver_check(38): Check Flash Memory Controller v100 ...hifmc_ip_ver_check(44):  Found
+hifmc_spi_nor_probe(2213): SPI Nor ID Table Version 1.0
+SPI Nor(cs 0) ID: 0xff 0xf8 0x1f can't find in the ID table !!!
+Failed to initialize SPI flash at 0:0
+No SPI flash selected. Please run `sf probe'
+you should first set:
+
+args: [format]
+	-<format> : 0: semi-plannar yvu420
+	- setenv jpeg_addr     0x--------
+	- setenv jpeg_size     0x--------
+	- setenv vobuf         0x--------
+	- setenv jpeg_emar_buf 0x--------
+
+jpeg decoding ...
+<<addr=0x9f000000, size=0x100000, jpeg_emar_buf=0x9f400000, vobuf=0x9f800000>>
+addr:0x9f000000,size:1048576,logoaddr:0,:75,72
+load jpeg err. 
+dev 0 opened!
+video layer 0 opened!
+No SPI flash selected. Please run `sf probe'
+Wrong Image Format for bootm command
+ERROR: can't get kernel image!
+hisilicon # 
+
+
+
+hisilicon #printenv 
+arch=arm
+baudrate=115200
+board=hi3516av300
+board_name=hi3516av300
+bootargs=mem=256M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 rw mtdparts=hi_sfc:1M(u-boot-c21x.bin),4M(kernel-c21x),26M(c212_update),1M(logo.jpg)
+bootcmd=sf probe 0;sf read 0x9f000000 0x1F00000 0x100000;decjpg 0;startvo 0 32 10;startvl 0 0x9f800000 1920 0 0 1920 1080;sf read 0x82000000 0x100000 0x400000;bootm 0x82000000
+bootdelay=0
+cpu=armv7
+ethact=eth0
+ipaddr=192.168.1.229
+jpeg_addr=0x9f000000
+jpeg_emar_buf=0x9f400000
+jpeg_size=0x100000
+netmask=255.255.255.0
+serverip=192.168.1.100
+soc=hi3516av300
+stderr=serial
+stdin=serial
+stdout=serial
+vendor=hisilicon
+verify=n
+vobuf=0x9f800000
+
+Environment size: 671/262140 bytes
+
+
+setenv bootargs 'mem=256M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 rw mtdparts=hi_sfc:1M(u-boot-c21x.bin),4M(kernel-c21x),26M(c212_update),1M(logo.jpg) single'
+
+hisilicon # setenv bootargs 'mem=256M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 rw mtdparts=hi_sfc:1M(u-boot-c21x.bin),4M(kernel-c21x),26M(c212_update),1M(logo.jpg) single'

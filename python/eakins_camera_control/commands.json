@@ -2,7 +2,7 @@
     "camera": {
         "type": "C212",
         "ip": "192.168.1.10",
-        "port": 420
+        "port": 1234
     },
     "commands": {
         "default": {
@@ -100,7 +100,7 @@
             "address": "0x1B",
             "start_byte": 85,
             "data": 1,
-            "help_text": "Set 50Hz rate rate"
+            "help_text": "Set 50Hz frame rate"
         },
         "60hz": {
             "address": "0x1B",
